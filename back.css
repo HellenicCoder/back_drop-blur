@@ -1,0 +1,51 @@
+.popup {
+    position: absolute;
+    inset: 0;
+    width: 450px;
+    height: 220px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    
+    
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 var(--shadow-size, 40px) #00000099;
+    
+    cursor: grab;
+    
+    &::before {    
+      content: '';
+  
+      position: absolute;
+      
+      z-index:-1;
+      
+      inset: calc(var(--blur-size, 100px) * -1);
+      
+      backdrop-filter: blur(var(--blur-strength, 10px));
+      
+      mask: 
+        linear-gradient(to top, transparent 0%, red var(--blur-size) calc(100% - var(--blur-size)), transparent 100%), 
+        linear-gradient(to left, transparent 0%, red var(--blur-size) calc(100% - var(--blur-size)), transparent 100%);
+      -webkit-mask: 
+        linear-gradient(to top, transparent 0%, red var(--blur-size) calc(100% - var(--blur-size)), transparent 100%), 
+        linear-gradient(to left, transparent 0%, red var(--blur-size) calc(100% - var(--blur-size)), transparent 100%);
+      
+      mask-composite: intersect;
+      -webkit-mask-composite: source-in;
+    }
+  }
+
+  body {
+    height: 100vh;
+    overflow: hidden;
+    background: url('https://vistapointe.net/images/hieroglyphs-1.jpg') center / 20%;
+  }
+  
+  h1{ margin:0; font: 24px Roboto, Arial; }
+  .ui-draggable-dragging > * { pointer-events:none; }
+  .knobsIframe {
+    position: static !important;
+  }
